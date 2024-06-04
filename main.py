@@ -1,7 +1,6 @@
-import os
-
-from ML_frame.manage import main
+import subprocess
+import webbrowser
 
 if __name__ == '__main__':
-    os.chdir(os.path.join(os.path.dirname(__file__), "ML_frame"))
-    main()
+    subprocess.run("python manage.py runserver 0.0.0.0:8000")
+    webbrowser.open_new("http://0.0.0.0:8000")

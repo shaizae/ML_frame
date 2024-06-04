@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+*\*.xml
 # Distribution / packaging
 .Python
 build/
@@ -24,6 +24,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
 MANIFEST
 .venv
 
@@ -124,7 +125,6 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
 env/
 venv/
 ENV/
