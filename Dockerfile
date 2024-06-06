@@ -6,7 +6,7 @@ WORKDIR /ML_frame
 COPY requirements.txt /ML_frame
 COPY main.py /ML_frame
 RUN pip install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt --no-cache-dir
 COPY . /ML_frame
 ENTRYPOINT ["python3", "main.py"]
 
