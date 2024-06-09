@@ -1,13 +1,29 @@
-FROM python:3.12
+# Use Ubuntu as base image
+FROM ubuntu:latest
 
+#expose port
 EXPOSE 8000
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y python3 python3-venv
+
+
+# Set up the working directory
 WORKDIR /ML_frame
 
-COPY requirements.txt /ML_frame
-COPY main.py /ML_frame
-RUN pip install --upgrade pip
-RUN pip3 install -r requirements.txt --no-cache-dir
-COPY . /ML_frame
-ENTRYPOINT ["python3", "main.py"]
+# Create a virtual environment
+RUN python3 -m venv env
 
-CMD ["main.py"]
+# Activate the virtual environment
+ENV PATH="/app/env/bin:$PATH"
+
+# Copy and install Python dependencies
+COPY requirements.txt /ML_frame/
+RUN /ML_frame/env/bin/pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code
+COPY . /ML_frame/
+
+# Command to run your application
+CMD ["python", "main.py"]
